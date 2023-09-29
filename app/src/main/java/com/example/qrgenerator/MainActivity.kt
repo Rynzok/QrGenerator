@@ -6,6 +6,7 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.ImageView
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
@@ -26,6 +27,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         im = findViewById(R.id.imageView)
+        val userDate: EditText = findViewById(R.id.userText)
         bGenerate = findViewById(R.id.button)
         bScanner = findViewById(R.id.buttonScanner)
 
@@ -34,7 +36,8 @@ class MainActivity : AppCompatActivity() {
         }
 
         bGenerate?.setOnClickListener{
-            generateQrCode("Круто же?")
+            generateQrCode(userDate.text.toString().trim())
+            userDate.text.clear()
 
         }
     }

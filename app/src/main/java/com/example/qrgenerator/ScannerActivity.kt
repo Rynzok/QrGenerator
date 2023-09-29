@@ -3,6 +3,7 @@ package com.example.qrgenerator
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import android.widget.Toast
 import me.dm7.barcodescanner.zbar.Result
 import me.dm7.barcodescanner.zbar.ZBarScannerView
 
@@ -27,6 +28,7 @@ class ScannerActivity : AppCompatActivity(), ZBarScannerView.ResultHandler {
 
     override fun handleResult(result: Result?) {
         Log.d("Mylog", "Result:${result?.contents}")
+        Toast.makeText(this, "${result?.contents}" , Toast.LENGTH_SHORT).show()
         finish()
     }
 }
