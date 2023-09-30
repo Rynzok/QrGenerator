@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">QrGenerator</string>
+    <string-array name="encryptionMethods">
+        <item>One</item>
+        <item>Two</item>
+        <item>Three</item>
+    </string-array>
 </resources>

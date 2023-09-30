@@ -5,9 +5,12 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
 import android.widget.ImageView
+import android.widget.Spinner
+import android.widget.TextView
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
 import androidx.appcompat.app.AppCompatActivity
@@ -20,6 +23,9 @@ class MainActivity : AppCompatActivity() {
     var im: ImageView? = null
     var bGenerate: Button? = null
     var bScanner: Button? = null
+    var bEncrypt: Button? = null
+    var bDecrypt: Button? = null
+
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,8 +34,21 @@ class MainActivity : AppCompatActivity() {
 
         im = findViewById(R.id.imageView)
         val userDate: EditText = findViewById(R.id.userText)
+        val spinner: Spinner = findViewById(R.id.cryptList)
+        val cryptText: TextView? = findViewById(R.id.CryptText)
         bGenerate = findViewById(R.id.button)
         bScanner = findViewById(R.id.buttonScanner)
+        bEncrypt = findViewById(R.id.bEncrypt)
+        bDecrypt = findViewById(R.id.bDecrypt)
+
+        bEncrypt?.setOnClickListener{
+            cryptText?.text = encryption(userDate.text.toString().trim(), "One", true)
+        }
+
+        bDecrypt?.setOnClickListener{
+            cryptText?.text = encryption(userDate.text.toString().trim(), "One", false)
+        }
+
 
         bScanner?.setOnClickListener{
             checkCameraPermission()
@@ -40,6 +59,16 @@ class MainActivity : AppCompatActivity() {
             userDate.text.clear()
 
         }
+
+        ArrayAdapter.createFromResource(
+            this,
+            R.array.encryptionMethods,
+            android.R.layout.simple_spinner_item
+        ).also { adapter ->
+            adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner.adapter = adapter
+        }
+
     }
 
     private fun generateQrCode(text: String){
@@ -80,4 +109,19 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
+    private fun encryption(
+        text: String,
+        method: String,
+        way: Boolean
+    ): (String)
+    {
+        return if(way){
+            "Ты пидр"
+        }else{
+            "Ты лох"
+        }
+
+    }
+
+
 }

@@ -4,39 +4,39 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#A3A1A1"
+    android:background="@color/white"
     tools:context=".MainActivity">
 
     <Button
         android:id="@+id/button"
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:layout_height="50dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        android:layout_marginBottom="32dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="24dp"
         android:text="Generation"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/buttonScanner"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/buttonScanner"
-        android:layout_width="200dp"
+        android:layout_width="240dp"
         android:layout_height="50dp"
+        android:layout_marginBottom="32dp"
         android:text="Scanner"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardView"
-        app:layout_constraintVertical_bias="0.953" />
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent" />
 
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="250dp"
         android:layout_height="250dp"
+        android:layout_marginTop="32dp"
         app:cardCornerRadius="5dp"
-        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -52,7 +52,8 @@
                 android:layout_width="0dp"
                 android:layout_height="match_parent"
                 android:layout_weight="1"
-                android:contentDescription="@null" />
+                android:contentDescription="@null"
+                android:src="@drawable/qr" />
         </LinearLayout>
 
     </androidx.cardview.widget.CardView>
@@ -61,12 +62,60 @@
         android:id="@+id/userText"
         android:layout_width="300dp"
         android:layout_height="50dp"
+        android:layout_marginTop="20dp"
         android:ems="10"
-        android:hint="Введите текст"
+        android:hint="Enter text"
         android:inputType="text"
-        app:layout_constraintBottom_toTopOf="@+id/cardView"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/cardView" />
+
+    <TextView
+        android:id="@+id/CryptText"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userText" />
+
+    <Spinner
+        android:id="@+id/cryptList"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/CryptText" />
+
+    <Button
+        android:id="@+id/bEncrypt"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginBottom="32dp"
+        android:text="encrypt"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toStartOf="@+id/bDecrypt"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cryptList" />
+
+    <Button
+        android:id="@+id/bDecrypt"
+        android:layout_width="100dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="40dp"
+        android:layout_marginBottom="32dp"
+        android:text="decrypt"
+        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/bEncrypt"
+        app:layout_constraintTop_toBottomOf="@+id/cryptList" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
