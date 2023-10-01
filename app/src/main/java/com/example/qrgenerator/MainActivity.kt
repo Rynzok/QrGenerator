@@ -33,20 +33,23 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         im = findViewById(R.id.imageView)
-        val userDate: EditText = findViewById(R.id.userText)
-        val spinner: Spinner = findViewById(R.id.cryptList)
-        val cryptText: TextView? = findViewById(R.id.CryptText)
         bGenerate = findViewById(R.id.button)
         bScanner = findViewById(R.id.buttonScanner)
         bEncrypt = findViewById(R.id.bEncrypt)
         bDecrypt = findViewById(R.id.bDecrypt)
 
+        val userDate: EditText = findViewById(R.id.userText)
+        val spinner: Spinner = findViewById(R.id.cryptList)
+        val cryptText: TextView? = findViewById(R.id.CryptText)
+
         bEncrypt?.setOnClickListener{
-            cryptText?.text = encryption(userDate.text.toString().trim(), "One", true)
+            val enigma = EncryptionMachine(userDate.text.toString().trim(), spinner.selectedItem.toString(),true)
+            cryptText?.text = enigma.encryption()
         }
 
         bDecrypt?.setOnClickListener{
-            cryptText?.text = encryption(userDate.text.toString().trim(), "One", false)
+            val enigma = EncryptionMachine(userDate.text.toString().trim(), spinner.selectedItem.toString(), false)
+            cryptText?.text = enigma.encryption()
         }
 
 
@@ -109,19 +112,5 @@ class MainActivity : AppCompatActivity() {
         }
 
     }
-    private fun encryption(
-        text: String,
-        method: String,
-        way: Boolean
-    ): (String)
-    {
-        return if(way){
-            "Ты пидр"
-        }else{
-            "Ты лох"
-        }
-
-    }
-
 
 }
