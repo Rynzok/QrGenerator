@@ -26,7 +26,7 @@ class EncryptionMachine (
 
     private fun decryptionMethod():String{
         return when(method){
-            "One" -> "Во-первых ты пидр и лох"
+            "One" -> verticalDecryption(text.replace(" ", ""))
             "Two" -> "Во-вторых ты лох и пидр"
             "Three" -> "Во-третьих ты чмо, лох и пидр"
             else -> "Ты ебанат?"

@@ -6,6 +6,10 @@ fun verticalEncryption(text: String):String{
     return getFromArrayEncrypt(fillingArrayEncrypt(text, findSize(text.length)), findSize(text.length), text.length).joinToString(separator = "")
 }
 
+fun verticalDecryption(text: String):String{
+    return getFromArrayDecrypt(fillingArrayDecrypt(text, findSize(text.length)), findSize(text.length), text.length).joinToString(separator = "")
+}
+
 fun fillingArrayEncrypt(text: String, size: Pair<Int, Int>): Array<Array<String?>> {
     val arr = Array(size.second) { arrayOfNulls<String>(size.first)}
     var n = 0
@@ -35,6 +39,37 @@ fun getFromArrayEncrypt(arr: Array<Array<String?>>, size: Pair<Int, Int>, length
         }
         if (n == length) {
             break
+        }
+    }
+    return fullMassiv
+}
+
+fun fillingArrayDecrypt(text: String, size: Pair<Int, Int>): Array<Array<String?>> {
+    val arr = Array(size.second) { arrayOfNulls<String>(size.first)}
+    var n = 0
+    for (j in 0..<size.first) {
+        for (i in 0..<size.second) {
+            arr[i][j] = text[n].toString()
+            n++
+            if (n == text.length) {
+                return arr
+            }
+        }
+    }
+    return arr
+}
+
+fun getFromArrayDecrypt(arr: Array<Array<String?>>, size: Pair<Int, Int>, length: Int): Array<String?> {
+    val fullMassiv = arrayOfNulls<String>(length)
+    var n = 0
+
+    for (i in 0..<size.second) {
+        for (j in 0..<size.first) {
+            if (arr[i][j] != null) {
+                fullMassiv[n] = arr[i][j]
+                n++
+
+            }
         }
     }
     return fullMassiv
