@@ -3,7 +3,7 @@ package com.example.qrgenerator
 import kotlin.math.sqrt
 
 fun verticalEncryption(text: String):String{
-    return getFromArrayEncrypt(fillingArrayEncrypt(text, findSize(text.length)), findSize(text.length), text.length).toString()
+    return getFromArrayEncrypt(fillingArrayEncrypt(text, findSize(text.length)), findSize(text.length), text.length).joinToString(separator = "")
 }
 
 fun fillingArrayEncrypt(text: String, size: Pair<Int, Int>): Array<Array<String?>> {
