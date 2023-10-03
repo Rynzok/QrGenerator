@@ -8,20 +8,20 @@
     tools:context=".MainActivity">
 
     <Button
-        android:id="@+id/button"
+        android:id="@+id/bGeneration"
         android:layout_width="240dp"
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="24dp"
         android:text="Generation"
-        app:layout_constraintBottom_toTopOf="@+id/buttonScanner"
+        app:layout_constraintBottom_toTopOf="@+id/bScanner"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.494"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
-        android:id="@+id/buttonScanner"
+        android:id="@+id/bScanner"
         android:layout_width="240dp"
         android:layout_height="50dp"
         android:layout_marginBottom="32dp"
@@ -73,7 +73,7 @@
         app:layout_constraintTop_toBottomOf="@+id/cardView" />
 
     <TextView
-        android:id="@+id/CryptText"
+        android:id="@+id/cryptText"
         android:layout_width="300dp"
         android:layout_height="50dp"
         android:layout_marginTop="10dp"
@@ -91,7 +91,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/CryptText" />
+        app:layout_constraintTop_toBottomOf="@+id/cryptText" />
 
     <Button
         android:id="@+id/bEncrypt"
@@ -101,7 +101,7 @@
         android:layout_marginTop="32dp"
         android:layout_marginBottom="32dp"
         android:text="encrypt"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/bGeneration"
         app:layout_constraintEnd_toStartOf="@+id/bDecrypt"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
@@ -115,7 +115,7 @@
         android:layout_marginEnd="40dp"
         android:layout_marginBottom="32dp"
         android:text="decrypt"
-        app:layout_constraintBottom_toTopOf="@+id/button"
+        app:layout_constraintBottom_toTopOf="@+id/bGeneration"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bEncrypt"
         app:layout_constraintTop_toBottomOf="@+id/cryptList" />

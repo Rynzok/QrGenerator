@@ -6,61 +6,48 @@ import android.content.pm.PackageManager
 import android.graphics.Color
 import android.os.Bundle
 import android.widget.ArrayAdapter
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import com.example.qrgenerator.databinding.ActivityMainBinding
 import com.google.zxing.WriterException
 
 
 class MainActivity : AppCompatActivity() {
-    var im: ImageView? = null
-    var bGenerate: Button? = null
-    var bScanner: Button? = null
-    var bEncrypt: Button? = null
-    var bDecrypt: Button? = null
-
-
+    private lateinit var binding: ActivityMainBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
-        im = findViewById(R.id.imageView)
-        bGenerate = findViewById(R.id.button)
-        bScanner = findViewById(R.id.buttonScanner)
-        bEncrypt = findViewById(R.id.bEncrypt)
-        bDecrypt = findViewById(R.id.bDecrypt)
-
-        val userDate: EditText = findViewById(R.id.userText)
-        val spinner: Spinner = findViewById(R.id.cryptList)
-        val cryptText: TextView? = findViewById(R.id.CryptText)
-
-        bEncrypt?.setOnClickListener{
-            val enigma = EncryptionMachine(userDate.text.toString().trim(), spinner.selectedItem.toString(),true)
-            cryptText?.text = enigma.encryption()
+        binding.bEncrypt.setOnClickListener{
+            val enigma = EncryptionMachine(binding.userText.text.toString().trim(), binding.cryptList.selectedItem.toString(),true)
+            binding.cryptText.text = enigma.encryption()
         }
 
-        bDecrypt?.setOnClickListener{
-            val enigma = EncryptionMachine(userDate.text.toString().trim(), spinner.selectedItem.toString(), false)
-            cryptText?.text = enigma.encryption()
+        binding.bDecrypt.setOnClickListener{
+            val enigma = EncryptionMachine(binding.userText.text.toString().trim(), binding.cryptList.selectedItem.toString(), false)
+            binding.cryptText.text = enigma.encryption()
         }
 
 
-        bScanner?.setOnClickListener{
+        binding.bScanner.setOnClickListener{
             checkCameraPermission()
         }
 
-        bGenerate?.setOnClickListener{
-            generateQrCode(userDate.text.toString().trim())
-            userDate.text.clear()
+        binding.bGeneration.setOnClickListener{
+            generateQrCode(binding.userText.text.toString().trim())
+            binding.userText.text.clear()
 
+        }
+
+        binding.imageView.setOnClickListener {
+            val qrDialog = QrDialog()
+            val manager = supportFragmentManager
+            qrDialog.show(manager,"Круто")
         }
 
         ArrayAdapter.createFromResource(
@@ -69,7 +56,7 @@ class MainActivity : AppCompatActivity() {
             android.R.layout.simple_spinner_item
         ).also { adapter ->
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner.adapter = adapter
+            binding.cryptList.adapter = adapter
         }
 
     }
@@ -80,9 +67,9 @@ class MainActivity : AppCompatActivity() {
         qrGenerator.colorWhite = Color.BLACK
         try{
             val bMap = qrGenerator.bitmap
-            im?.setImageBitmap(bMap)
+            binding.imageView.setImageBitmap(bMap)
 
-        } catch(e: WriterException){
+        } catch(_: WriterException){
 
         }
 
