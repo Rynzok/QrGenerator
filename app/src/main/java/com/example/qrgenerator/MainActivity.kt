@@ -4,19 +4,28 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
+import android.icu.util.Calendar
 import android.os.Bundle
+import android.os.Environment
 import android.widget.ArrayAdapter
 import androidmads.library.qrgenearator.QRGContents
 import androidmads.library.qrgenearator.QRGEncoder
+import androidmads.library.qrgenearator.QRGSaver
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
+import androidx.core.view.drawToBitmap
 import com.example.qrgenerator.databinding.ActivityMainBinding
 import com.google.zxing.WriterException
+import java.util.Date
 
 
 class MainActivity : AppCompatActivity() {
+
     private lateinit var binding: ActivityMainBinding
+    private val dataModel: DataModel by viewModels()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -58,6 +67,11 @@ class MainActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.cryptList.adapter = adapter
         }
+        dataModel.selectedItem.observe(this) {
+            when (it) {
+                "Save" -> saveQr()
+            }
+        }
 
     }
 
@@ -72,7 +86,6 @@ class MainActivity : AppCompatActivity() {
         } catch(_: WriterException){
 
         }
-
     }
 
     private fun checkCameraPermission(){
@@ -97,7 +110,17 @@ class MainActivity : AppCompatActivity() {
                 startActivity(Intent(this, ScannerActivity::class.java))
             }
         }
+    }
 
+    private fun saveQr(){
+        val qrgSaver = QRGSaver()
+        val date = Calendar.getInstance().time
+        qrgSaver.save(
+            Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).path + "/QRCode/",
+            "Qr-code_${date.time}",
+            binding.imageView.drawToBitmap(),
+            QRGContents.ImageType.IMAGE_JPEG
+        )
     }
 
 }

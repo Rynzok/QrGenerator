@@ -26,12 +26,12 @@ fun fillingArrayEncrypt(text: String, size: Pair<Int, Int>): Array<Array<String?
 }
 
 fun getFromArrayEncrypt(arr: Array<Array<String?>>, size: Pair<Int, Int>, length: Int): Array<String?> {
-    val fullMassiv = arrayOfNulls<String>(length)
+    val resultArray = arrayOfNulls<String>(length)
     var n = 0
 
     for (j in 0..<size.first) {
         for (i in 0..<size.second) {
-                fullMassiv[n] = arr[i][j]
+                resultArray[n] = arr[i][j]
                 n++
             if (n == length) {
                 break
@@ -41,7 +41,7 @@ fun getFromArrayEncrypt(arr: Array<Array<String?>>, size: Pair<Int, Int>, length
             break
         }
     }
-    return fullMassiv
+    return resultArray
 }
 
 fun fillingArrayDecrypt(text: String, size: Pair<Int, Int>): Array<Array<String?>> {
@@ -60,19 +60,19 @@ fun fillingArrayDecrypt(text: String, size: Pair<Int, Int>): Array<Array<String?
 }
 
 fun getFromArrayDecrypt(arr: Array<Array<String?>>, size: Pair<Int, Int>, length: Int): Array<String?> {
-    val fullMassiv = arrayOfNulls<String>(length)
+    val resultArray = arrayOfNulls<String>(length)
     var n = 0
 
     for (i in 0..<size.second) {
         for (j in 0..<size.first) {
             if (arr[i][j] != null) {
-                fullMassiv[n] = arr[i][j]
+                resultArray[n] = arr[i][j]
                 n++
 
             }
         }
     }
-    return fullMassiv
+    return resultArray
 }
 
 fun findSize(length: Int): Pair<Int,Int> {
