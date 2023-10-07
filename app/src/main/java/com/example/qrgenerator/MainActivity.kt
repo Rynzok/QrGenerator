@@ -1,10 +1,10 @@
 package com.example.qrgenerator
 
 import android.Manifest
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.graphics.Color
-import android.icu.util.Calendar
 import android.os.Bundle
 import android.os.Environment
 import android.widget.ArrayAdapter
@@ -18,6 +18,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.drawToBitmap
 import com.example.qrgenerator.databinding.ActivityMainBinding
 import com.google.zxing.WriterException
+import java.text.SimpleDateFormat
 import java.util.Date
 
 
@@ -56,7 +57,7 @@ class MainActivity : AppCompatActivity() {
         binding.imageView.setOnClickListener {
             val qrDialog = QrDialog()
             val manager = supportFragmentManager
-            qrDialog.show(manager,"Круто")
+            qrDialog.show(manager,"Cool")
         }
 
         ArrayAdapter.createFromResource(
@@ -112,12 +113,14 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    @SuppressLint("SimpleDateFormat")
     private fun saveQr(){
         val qrgSaver = QRGSaver()
-        val date = Calendar.getInstance().time
+        val sdf = SimpleDateFormat("dd-M hh-mm-ss")
+        val date = sdf.format(Date())
         qrgSaver.save(
             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS).path + "/QRCode/",
-            "Qr-code_${date.time}",
+            "Qr-code_${date}",
             binding.imageView.drawToBitmap(),
             QRGContents.ImageType.IMAGE_JPEG
         )
