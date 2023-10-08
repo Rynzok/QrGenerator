@@ -55,7 +55,13 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.bGeneration.setOnClickListener{
-            generateQrCode(binding.userText.text.toString().trim())
+            if(binding.cryptText.text == null){
+                generateQrCode(binding.userText.text.toString().trim())
+            }
+            else{
+                generateQrCode(binding.cryptText.text.toString().trim())
+                binding.cryptText.text = null
+            }
             binding.userText.text.clear()
 
         }
@@ -74,6 +80,7 @@ class MainActivity : AppCompatActivity() {
             adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             binding.cryptList.adapter = adapter
         }
+
         dataModel.selectedItem.observe(this) {
             when (it) {
                 "Save" -> saveQr()
