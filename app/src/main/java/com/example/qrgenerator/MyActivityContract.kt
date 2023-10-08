@@ -3,8 +3,6 @@ package com.example.qrgenerator
 import android.app.Activity
 import android.content.Context
 import android.content.Intent
-import android.graphics.Bitmap
-import android.util.Log
 import androidx.activity.result.contract.ActivityResultContract
 
 class MyActivityContract : ActivityResultContract<String, String?>() {
