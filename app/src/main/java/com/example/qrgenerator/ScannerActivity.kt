@@ -27,7 +27,8 @@ class ScannerActivity : AppCompatActivity(), ZBarScannerView.ResultHandler {
     }
 
     override fun handleResult(result: Result?) {
-        Log.d("Mylog", "Result:${result?.contents}")
+        intent.putExtra("Content", result?.contents)
+        setResult(RESULT_OK, intent)
         Toast.makeText(this, "${result?.contents}" , Toast.LENGTH_SHORT).show()
         finish()
     }

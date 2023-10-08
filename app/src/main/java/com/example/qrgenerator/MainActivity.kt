@@ -32,6 +32,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
     private val dataModel: DataModel by viewModels()
+    private val getContent = registerForActivityResult(MyActivityContract()){text: String? ->
+            binding.userText.setText(text)
+
+    }
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -55,7 +59,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         binding.bGeneration.setOnClickListener{
-            if(binding.cryptText.text == null){
+            if(binding.cryptText.text == ""){
                 generateQrCode(binding.userText.text.toString().trim())
             }
             else{
@@ -110,7 +114,8 @@ class MainActivity : AppCompatActivity() {
                 arrayOf(Manifest.permission.CAMERA), 12)
 
         } else{
-            startActivity(Intent(this, ScannerActivity::class.java))
+//            startActivity(Intent(this, ScannerActivity::class.java))
+            getContent.launch("idiot")
         }
     }
 
@@ -122,7 +127,7 @@ class MainActivity : AppCompatActivity() {
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
         if(requestCode == 12){
             if(grantResults[0] == PackageManager.PERMISSION_GRANTED){
-                startActivity(Intent(this, ScannerActivity::class.java))
+                getContent.launch("idiot")
             }
         }
     }
