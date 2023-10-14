@@ -10,12 +10,12 @@ fun verticalDecryption(text: String):String{
     return getFromArrayDecrypt(fillingArrayDecrypt(text, findSize(text.length)), findSize(text.length), text.length).joinToString(separator = "")
 }
 
-fun fillingArrayEncrypt(text: String, size: Pair<Int, Int>): Array<Array<String?>> {
-    val arr = Array(size.second) { arrayOfNulls<String>(size.first)}
+fun fillingArrayEncrypt(text: String, size: Pair<Int, Int>): Array<CharArray> {
+    val arr = Array(size.second) { CharArray(size.first){' '}}
     var n = 0
     for (i in 0..<size.second) {
         for (j in 0..<size.first) {
-            arr[i][j] = text[n].toString()
+            arr[i][j] = text[n]
             n++
             if (n == text.length) {
                 return arr
@@ -25,8 +25,8 @@ fun fillingArrayEncrypt(text: String, size: Pair<Int, Int>): Array<Array<String?
     return arr
 }
 
-fun getFromArrayEncrypt(arr: Array<Array<String?>>, size: Pair<Int, Int>, length: Int): Array<String?> {
-    val resultArray = arrayOfNulls<String>(length)
+fun getFromArrayEncrypt(arr: Array<CharArray>, size: Pair<Int, Int>, length: Int): Array<Char?> {
+    val resultArray = arrayOfNulls<Char>(length)
     var n = 0
 
     for (j in 0..<size.first) {
@@ -44,12 +44,12 @@ fun getFromArrayEncrypt(arr: Array<Array<String?>>, size: Pair<Int, Int>, length
     return resultArray
 }
 
-fun fillingArrayDecrypt(text: String, size: Pair<Int, Int>): Array<Array<String?>> {
-    val arr = Array(size.second) { arrayOfNulls<String>(size.first)}
+fun fillingArrayDecrypt(text: String, size: Pair<Int, Int>): Array<CharArray> {
+    val arr = Array(size.second) { CharArray(size.first){' '} }
     var n = 0
     for (j in 0..<size.first) {
         for (i in 0..<size.second) {
-            arr[i][j] = text[n].toString()
+            arr[i][j] = text[n]
             n++
             if (n == text.length) {
                 return arr
@@ -59,13 +59,13 @@ fun fillingArrayDecrypt(text: String, size: Pair<Int, Int>): Array<Array<String?
     return arr
 }
 
-fun getFromArrayDecrypt(arr: Array<Array<String?>>, size: Pair<Int, Int>, length: Int): Array<String?> {
-    val resultArray = arrayOfNulls<String>(length)
+fun getFromArrayDecrypt(arr: Array<CharArray>, size: Pair<Int, Int>, length: Int): Array<Char?> {
+    val resultArray = arrayOfNulls<Char>(length)
     var n = 0
 
     for (i in 0..<size.second) {
         for (j in 0..<size.first) {
-            if (arr[i][j] != null) {
+            if (arr[i][j] != ' ') {
                 resultArray[n] = arr[i][j]
                 n++
 
