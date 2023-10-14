@@ -1,11 +1,10 @@
 package com.example.qrgenerator
 
 class EncryptionMachine (
-    var text: String,
-    var method: String,
-    var way: Boolean){
+    private var text: String,
+    private var method: String,
+    private var way: Boolean){
 
-    var result: String? = null
 
     fun encryption() : String{
         return if(way){
@@ -17,18 +16,18 @@ class EncryptionMachine (
 
     private fun encryptionMethod():String{
         return when(method){
-            "One" -> verticalEncryption(text.replace(" ", ""))
-            "Two" -> "Во-вторых ты лох"
-            "Three" -> "Во-третьих ты чмо"
+            "Вертикальное шифрование" -> verticalEncryption(text.replace(" ", ""))
+            "Меандровое шифрование" -> meanderEncryption(text.replace(" ", ""))
+            "Спиральное шифрование" -> "Во-третьих ты чмо"
             else -> "Ты ебанат?"
         }
     }
 
     private fun decryptionMethod():String{
         return when(method){
-            "One" -> verticalDecryption(text.replace(" ", ""))
-            "Two" -> "Во-вторых ты лох и пидр"
-            "Three" -> "Во-третьих ты чмо, лох и пидр"
+            "Вертикальное шифрование" -> verticalDecryption(text.replace(" ", ""))
+            "Меандровое шифрование" -> meanderDecryption(text.replace(" ", ""))
+            "Спиральное шифрование" -> "Во-третьих ты чмо, лох и пидр"
             else -> "Ты ебанат?"
         }
     }
