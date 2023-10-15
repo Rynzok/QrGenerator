@@ -1,4 +1,4 @@
-package com.example.qrgenerator
+package com.example.qrgenerator.crypt
 
 import kotlin.math.sqrt
 

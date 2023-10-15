@@ -1,4 +1,4 @@
-package com.example.qrgenerator
+package com.example.qrgenerator.crypt
 
 fun meanderEncryption(text: String) : String {
     return getFromArrayEncryptMeander(fillingArrayEncrypt(text, findSize(text.length)), findSize(text.length),text.length).joinToString(separator = "").replace(" ", "")

@@ -1,5 +1,12 @@
 package com.example.qrgenerator
 
+import com.example.qrgenerator.crypt.meanderDecryption
+import com.example.qrgenerator.crypt.meanderEncryption
+import com.example.qrgenerator.crypt.spiralDecryption
+import com.example.qrgenerator.crypt.spiralEncryption
+import com.example.qrgenerator.crypt.verticalDecryption
+import com.example.qrgenerator.crypt.verticalEncryption
+
 class EncryptionMachine (
     private var text: String,
     private var method: String,
@@ -18,7 +25,7 @@ class EncryptionMachine (
         return when(method){
             "Вертикальное шифрование" -> verticalEncryption(text.replace(" ", ""))
             "Меандровое шифрование" -> meanderEncryption(text.replace(" ", ""))
-            "Спиральное шифрование" -> "Во-третьих ты чмо"
+            "Спиральное шифрование" -> spiralEncryption(text.replace(" ", ""))
             else -> "Ты ебанат?"
         }
     }
@@ -27,7 +34,7 @@ class EncryptionMachine (
         return when(method){
             "Вертикальное шифрование" -> verticalDecryption(text.replace(" ", ""))
             "Меандровое шифрование" -> meanderDecryption(text.replace(" ", ""))
-            "Спиральное шифрование" -> "Во-третьих ты чмо, лох и пидр"
+            "Спиральное шифрование" -> spiralDecryption(text.replace(" ", ""))
             else -> "Ты ебанат?"
         }
     }
