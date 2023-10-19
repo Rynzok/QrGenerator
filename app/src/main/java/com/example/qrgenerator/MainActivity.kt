@@ -70,6 +70,11 @@ class MainActivity : AppCompatActivity() {
 
         }
 
+        binding.bChange.setOnClickListener {
+            binding.userText.setText(binding.cryptText.text)
+            binding.cryptText.text = null
+        }
+
         binding.imageView.setOnClickListener {
             val qrDialog = QrDialog()
             val manager = supportFragmentManager

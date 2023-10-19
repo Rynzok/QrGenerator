@@ -4,5 +4,6 @@
         <item>Вертикальное шифрование</item>
         <item>Меандровое шифрование</item>
         <item>Спиральное шифрование</item>
+        <item>АТБАШ</item>
     </string-array>
 </resources>

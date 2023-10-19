@@ -1,5 +1,7 @@
 package com.example.qrgenerator
 
+import com.example.qrgenerator.crypt.atbashDecryption
+import com.example.qrgenerator.crypt.atbashEncryption
 import com.example.qrgenerator.crypt.meanderDecryption
 import com.example.qrgenerator.crypt.meanderEncryption
 import com.example.qrgenerator.crypt.spiralDecryption
@@ -26,6 +28,7 @@ class EncryptionMachine (
             "Вертикальное шифрование" -> verticalEncryption(text.replace(" ", ""))
             "Меандровое шифрование" -> meanderEncryption(text.replace(" ", ""))
             "Спиральное шифрование" -> spiralEncryption(text.replace(" ", ""))
+            "АТБАШ" -> atbashEncryption(text.replace(" ", ""))
             else -> "Ты ебанат?"
         }
     }
@@ -35,6 +38,7 @@ class EncryptionMachine (
             "Вертикальное шифрование" -> verticalDecryption(text.replace(" ", ""))
             "Меандровое шифрование" -> meanderDecryption(text.replace(" ", ""))
             "Спиральное шифрование" -> spiralDecryption(text.replace(" ", ""))
+            "АТБАШ" -> atbashDecryption(text.replace(" ", ""))
             else -> "Ты ебанат?"
         }
     }

@@ -13,11 +13,11 @@
         android:layout_height="50dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
-        android:layout_marginBottom="24dp"
+        android:layout_marginBottom="8dp"
         android:text="Generation"
         app:layout_constraintBottom_toTopOf="@+id/bScanner"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.494"
+        app:layout_constraintHorizontal_bias="0.483"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -62,7 +62,7 @@
         android:id="@+id/userText"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="4dp"
         android:ems="10"
         android:hint="Enter text"
         android:inputType="text"
@@ -76,7 +76,7 @@
         android:id="@+id/cryptText"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="56dp"
         android:textColor="#000000"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
@@ -87,7 +87,7 @@
         android:id="@+id/cryptList"
         android:layout_width="300dp"
         android:layout_height="50dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
@@ -105,7 +105,8 @@
         app:layout_constraintEnd_toStartOf="@+id/bDecrypt"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cryptList" />
+        app:layout_constraintTop_toBottomOf="@+id/cryptList"
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/bDecrypt"
@@ -118,6 +119,17 @@
         app:layout_constraintBottom_toTopOf="@+id/bGeneration"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/bEncrypt"
-        app:layout_constraintTop_toBottomOf="@+id/cryptList" />
+        app:layout_constraintTop_toBottomOf="@+id/cryptList"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <Button
+        android:id="@+id/bChange"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change"
+        app:layout_constraintBottom_toTopOf="@+id/cryptText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/userText" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
