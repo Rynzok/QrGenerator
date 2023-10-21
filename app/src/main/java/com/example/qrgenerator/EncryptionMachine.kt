@@ -1,10 +1,11 @@
 package com.example.qrgenerator
 
-import androidx.activity.viewModels
 import com.example.qrgenerator.crypt.atbashDecryption
 import com.example.qrgenerator.crypt.atbashEncryption
 import com.example.qrgenerator.crypt.ceasarDecryption
 import com.example.qrgenerator.crypt.ceasarEncryption
+import com.example.qrgenerator.crypt.futuramaDecryption
+import com.example.qrgenerator.crypt.futuramaEncryption
 import com.example.qrgenerator.crypt.meanderDecryption
 import com.example.qrgenerator.crypt.meanderEncryption
 import com.example.qrgenerator.crypt.spiralDecryption
@@ -35,6 +36,7 @@ class EncryptionMachine (
             "Спиральное шифрование" -> spiralEncryption(text.replace(" ", ""))
             "АТБАШ" -> atbashEncryption(text.replace(" ", ""))
             "Шифр Цезаря" -> ceasarEncryption(text.replace(" ", ""), key)
+            "Шифр Футурамы" -> futuramaEncryption(text.replace(" ", ""))
             else -> "Ты ебанат?"
         }
     }
@@ -46,6 +48,7 @@ class EncryptionMachine (
             "Спиральное шифрование" -> spiralDecryption(text.replace(" ", ""))
             "АТБАШ" -> atbashDecryption(text.replace(" ", ""))
             "Шифр Цезаря" -> ceasarDecryption(text.replace(" ", ""), key)
+            "Шифр Футурамы" -> futuramaDecryption(text.replace(" ", ""))
             else -> "Ты ебанат?"
         }
     }
