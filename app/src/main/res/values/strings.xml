@@ -1,9 +1,17 @@
 <resources>
     <string name="app_name">QrGenerator</string>
+    <string name="encrypt">encrypt</string>
+    <string name="enter_text">Enter text</string>
+    <string name="generation">Generation</string>
+    <string name="scanner">Scanner</string>
+    <string name="decrypt">decrypt</string>
+    <string name="change">Change</string>
+    <string name="key">Key</string>
     <string-array name="encryptionMethods">
         <item>Вертикальное шифрование</item>
         <item>Меандровое шифрование</item>
         <item>Спиральное шифрование</item>
         <item>АТБАШ</item>
+        <item>Шифр Цезаря</item>
     </string-array>
 </resources>

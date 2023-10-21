@@ -34,7 +34,6 @@ class MainActivity : AppCompatActivity() {
     private val dataModel: DataModel by viewModels()
     private val getContent = registerForActivityResult(MyActivityContract()){text: String? ->
             binding.userText.setText(text)
-
     }
 
 
@@ -44,13 +43,11 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         binding.bEncrypt.setOnClickListener{
-            val enigma = EncryptionMachine(binding.userText.text.toString().trim(), binding.cryptList.selectedItem.toString(),true)
-            binding.cryptText.text = enigma.encryption()
+            encryptionStart(true)
         }
 
         binding.bDecrypt.setOnClickListener{
-            val enigma = EncryptionMachine(binding.userText.text.toString().trim(), binding.cryptList.selectedItem.toString(), false)
-            binding.cryptText.text = enigma.encryption()
+            encryptionStart(false)
         }
 
 
@@ -119,7 +116,6 @@ class MainActivity : AppCompatActivity() {
                 arrayOf(Manifest.permission.CAMERA), 12)
 
         } else{
-//            startActivity(Intent(this, ScannerActivity::class.java))
             getContent.launch("idiot")
         }
     }
@@ -175,7 +171,13 @@ class MainActivity : AppCompatActivity() {
             Toast.makeText(this, "" + e.message, Toast.LENGTH_SHORT).show()
         }
         return contentUri
+    }
 
+    private fun encryptionStart(way: Boolean){
+        var key = 0
+        if(binding.inputKey.text.toString() != "") key = binding.inputKey.text.toString().toInt()
+        val enigma = EncryptionMachine(binding.userText.text.toString().trim(), binding.cryptList.selectedItem.toString(), way , key)
+        binding.cryptText.text = enigma.encryption()
     }
 
 }

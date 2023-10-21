@@ -16,4 +16,3 @@ class MyActivityContract : ActivityResultContract<String, String?>() {
         return intent?.getStringExtra("Content")
     }
 }
-
