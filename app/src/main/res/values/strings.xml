@@ -14,5 +14,6 @@
         <item>АТБАШ</item>
         <item>Шифр Цезаря</item>
         <item>Шифр Футурамы</item>
+        <item>Шифр Гронсфельда</item>
     </string-array>
 </resources>

@@ -6,6 +6,8 @@ import com.example.qrgenerator.crypt.ceasarDecryption
 import com.example.qrgenerator.crypt.ceasarEncryption
 import com.example.qrgenerator.crypt.futuramaDecryption
 import com.example.qrgenerator.crypt.futuramaEncryption
+import com.example.qrgenerator.crypt.gronsfeldDecryption
+import com.example.qrgenerator.crypt.gronsfeldEncryption
 import com.example.qrgenerator.crypt.meanderDecryption
 import com.example.qrgenerator.crypt.meanderEncryption
 import com.example.qrgenerator.crypt.spiralDecryption
@@ -37,6 +39,7 @@ class EncryptionMachine (
             "АТБАШ" -> atbashEncryption(text.replace(" ", ""))
             "Шифр Цезаря" -> ceasarEncryption(text.replace(" ", ""), key)
             "Шифр Футурамы" -> futuramaEncryption(text.replace(" ", ""))
+            "Шифр Гронсфельда" -> gronsfeldEncryption(text.replace(" ", ""), key)
             else -> "Ты ебанат?"
         }
     }
@@ -49,6 +52,7 @@ class EncryptionMachine (
             "АТБАШ" -> atbashDecryption(text.replace(" ", ""))
             "Шифр Цезаря" -> ceasarDecryption(text.replace(" ", ""), key)
             "Шифр Футурамы" -> futuramaDecryption(text.replace(" ", ""))
+            "Шифр Гронсфельда" -> gronsfeldDecryption(text.replace(" ", ""), key)
             else -> "Ты ебанат?"
         }
     }
