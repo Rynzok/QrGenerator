@@ -3,9 +3,8 @@ package com.example.qrgenerator.crypt
 import kotlin.random.Random
 
 fun gronsfeldEncryption(text: String, key: Int) : String{
-    val codeArr = Array(text.length){"text"}
-    val rand = Random(key)
-    val keyArray = IntArray((3..9).random(rand)){ (1..9).random(rand) }
+    val codeArr = Array(text.length){""}
+    val keyArray = IntArray((3..9).random(Random(key))){ (1..9).random(Random(key)) }
     var i = 0
 
     while (i < text.length){
@@ -19,9 +18,8 @@ fun gronsfeldEncryption(text: String, key: Int) : String{
 }
 
 fun gronsfeldDecryption(text: String, key: Int) : String{
-    val codeArr = Array(text.length){"text"}
-    val rand = Random(key)
-    val keyArray = IntArray((3..9).random(rand)){ (1..9).random(rand) }
+    val codeArr = Array(text.length){""}
+    val keyArray = IntArray((3..9).random(Random(key))){ (1..9).random(Random(key)) }
     var i = 0
 
     while (i < text.length){
